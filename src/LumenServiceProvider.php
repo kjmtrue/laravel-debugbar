@@ -42,7 +42,7 @@ class LumenServiceProvider extends ServiceProvider
      */
     protected function checkAppDebug()
     {
-        return env('APP_DEBUG');
+        return env('APP_DEBUGBAR', env('APP_DEBUG'));
     }
 
     /**
