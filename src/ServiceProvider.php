@@ -20,12 +20,12 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
     {
         $configPath = __DIR__ . '/../config/debugbar.php';
         $this->mergeConfigFrom($configPath, 'debugbar');
-        
+
         $this->app->alias(
             'DebugBar\DataFormatter\DataFormatter',
             'DebugBar\DataFormatter\DataFormatterInterface'
         );
-        
+
         $this->app->singleton('debugbar', function ($app) {
                 $debugbar = new LaravelDebugbar($app);
 
@@ -36,7 +36,7 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
                 return $debugbar;
             }
         );
-        
+
         $this->app->alias('debugbar', 'Barryvdh\Debugbar\LaravelDebugbar');
 
         $this->app['command.debugbar.clear'] = $this->app->share(
@@ -156,7 +156,7 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
      */
     protected function checkAppDebug()
     {
-        return $this->app['config']->get('app.debug');
+        return $this->app['config']->get('app.debugbar');
     }
 
     /**
